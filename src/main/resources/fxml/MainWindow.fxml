@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TableView?>
+
+<BorderPane fx:id="borderPane_main"
+	xmlns="http://javafx.com/javafx/11.0.1"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="org.jeetu.work.controller.MainController">
+	<stylesheets>
+		<URL value="@../css/theme.css" />
+	</stylesheets>
+	<top>
+		<BorderPane styleClass="header-footer">
+			<left>
+				<Label id="header-logo" text="My Todo App" />
+			</left>
+			<right>
+				<Label id="header-text" fx:id="label_dateTime"
+					text="Date and Time" />
+			</right>
+		</BorderPane>
+	</top>
+	<left>
+		<VBox styleClass="left-panel">
+			<children>
+				<Text id="left-panel-text" styleClass="left-panel-item"
+					text="Add Todo" />
+				<TextField fx:id="textField_id" visible="false" />
+				<TextField fx:id="textField_item" promptText="Item"
+					styleClass="left-panel-item" />
+				<Button onAction="#saveTodo" styleClass="left-panel-item"
+					text="Save" />
+				<Separator />
+				<Separator />
+				<Button onAction="#closeWindow" styleClass="left-panel-item"
+					text="Close" />
+			</children>
+		</VBox>
+	</left>
+	<bottom>
+		<BorderPane styleClass="header-footer">
+			<center>
+				<Label id="header-text" text="© Jeetendra Gupta" />
+			</center>
+		</BorderPane>
+	</bottom>
+	<center>
+		<GridPane styleClass="center-panel">
+			<TextField id="textField_search" fx:id="textField_search" onKeyTyped="#searchTodo"
+				promptText="Search" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+			<TableView GridPane.columnIndex="0" GridPane.rowIndex="1"
+				GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" fx:id="tableView_todoTable"/>
+			<HBox GridPane.columnIndex="0" GridPane.rowIndex="2"
+				id="center-panel-hbox">
+				<children>
+					<Button id="button_completed" fx:id="button_completed"
+						text="Completed" styleClass="buttonBox" onAction="#completedTodo" />
+					<Button id="button_incomplete" fx:id="button_incomplete"
+						text="Incomplete" styleClass="buttonBox" onAction="#inCompleteTodo" />
+					<Button id="button_update" fx:id="button_update"
+						text="Update" styleClass="buttonBox" onAction="#updateTodo" />
+					<Button id="button_delete" fx:id="button_delete"
+						text="Delete" styleClass="buttonBox" onAction="#deleteTodo" />
+				</children>
+			</HBox>
+		</GridPane>
+	</center>
+</BorderPane>
